@@ -13,6 +13,97 @@ Note: Some examples require extra dev packages on Debian/Ubuntu:
 
 If you are on WSL, use a Linux distro (Ubuntu) shell, not Windows CMD/PowerShell.
 
+## Build and Run with CMake (recommended)
+Install CMake if you don’t have it:
+```bash
+sudo apt install -y cmake
+```
+
+Configure and build all demos:
+```bash
+mkdir -p build
+cd build
+cmake ..
+cmake --build . -j
+```
+This produces one executable per demo in the `build/` directory:
+- pipe
+- writer, reader
+- unix_server, unix_client
+- tcp_server, tcp_client
+- udp_server, udp_client
+- shm_writer, shm_reader
+- mq_writer, mq_reader
+- signal_demo
+
+Run examples (from inside `build/`):
+- Anonymous pipe:
+```bash
+./pipe
+```
+- FIFO (two terminals):
+```bash
+mkfifo myfifo
+# Terminal 1
+./reader
+# Terminal 2
+./writer
+```
+- UNIX domain sockets (two terminals):
+```bash
+# Terminal 1
+./unix_server
+# Terminal 2
+./unix_client
+```
+- TCP sockets (two terminals):
+```bash
+# Terminal 1
+./tcp_server
+# Terminal 2
+./tcp_client
+```
+- UDP sockets (two terminals):
+```bash
+# Terminal 1
+./udp_server
+# Terminal 2
+./udp_client
+```
+- POSIX shared memory + semaphore (two terminals):
+```bash
+# Terminal 1
+./shm_reader
+# Terminal 2
+./shm_writer
+```
+- POSIX message queues (two terminals):
+```bash
+# Terminal 1
+./mq_reader
+# Terminal 2
+./mq_writer
+```
+- Signals (two terminals):
+```bash
+./signal_demo
+# In another terminal, send a signal to the printed PID:
+kill -SIGUSR1 <pid>
+```
+
+Clean build artifacts:
+```bash
+cmake --build . --target clean
+cd .. && rm -rf build
+```
+
+Troubleshooting:
+- Some systems require `-lrt` for POSIX mq/shm. The CMake config links it if available.
+- If `/dev/mqueue` is missing for message queues: `sudo mount -t mqueue none /dev/mqueue` (may require systemd-based environment).
+- If you see permissions issues with shared memory, you can manually remove leftover objects: `sudo rm -f /dev/shm/myshm`.
+
+---
+
 ## 1) Anonymous Pipes
 File: `pipe.c`
 ```bash
