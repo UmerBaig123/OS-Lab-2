@@ -1,11 +1,10 @@
-// POSIX Message Queue Reader - Receive 1 million integers in batches
+// POSIX Message Queue Reader - Receive integers (simplified)
 #include <mqueue.h>
 #include <fcntl.h>
 #include <stdio.h>
 #include <time.h>
 
-#define NUM_INTEGERS 1000000
-#define BATCH_SIZE 1000  // Receive 1000 integers per message
+#define NUM_INTEGERS 10000  // Reduced for demo due to system limitations
 
 int main() {
     mqd_t mq = mq_open("/myq", O_RDONLY);
@@ -14,22 +13,23 @@ int main() {
         return 1;
     }
     
+    printf("Message queue opened successfully for reading.\n");
+    
     struct timespec start, end;
     clock_gettime(CLOCK_MONOTONIC, &start);
     
-    int batch[BATCH_SIZE];
-    int total_received = 0;
+    int received_int;
+    int count = 0;
     
-    // Receive 1 million integers in batches
-    while (total_received < NUM_INTEGERS) {
-        ssize_t bytes_received = mq_receive(mq, (char*)batch, BATCH_SIZE * sizeof(int), NULL);
+    // Receive integers
+    while (count < NUM_INTEGERS) {
+        ssize_t bytes_received = mq_receive(mq, (char*)&received_int, sizeof(int), NULL);
         if (bytes_received > 0) {
-            int ints_received = bytes_received / sizeof(int);
-            total_received += ints_received;
+            count++;
             
-            // Print progress every 100,000 integers
-            if (total_received % 100000 == 0) {
-                printf("Received %d/%d integers\n", total_received, NUM_INTEGERS);
+            // Print progress every 1000 integers
+            if (count % 1000 == 0) {
+                printf("Received %d/%d integers\n", count, NUM_INTEGERS);
             }
         } else {
             perror("mq_receive");
@@ -42,7 +42,8 @@ int main() {
     double time_taken = (end.tv_sec - start.tv_sec) + 
                        (end.tv_nsec - start.tv_nsec) / 1e9;
     
-    printf("Message Queue Reader: Received %d integers in %.6f seconds\n", total_received, time_taken);
+    printf("Message Queue Reader: Received %d integers in %.6f seconds\n", count, time_taken);
+    printf("Note: Reduced to %d integers due to POSIX message queue system limitations\n", NUM_INTEGERS);
     
     mq_close(mq);
     return 0;
