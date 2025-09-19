@@ -1,0 +1,1 @@
+/usr/bin/cc -Wl,--dependency-file=CMakeFiles/mq_writer.dir/link.d CMakeFiles/mq_writer.dir/mq_writer.c.o -o mq_writer  /usr/lib/x86_64-linux-gnu/librt.a

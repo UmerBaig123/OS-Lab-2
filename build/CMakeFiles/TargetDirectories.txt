@@ -1,0 +1,16 @@
+/home/runner/work/OS-Lab-2/OS-Lab-2/build/CMakeFiles/pipe.dir
+/home/runner/work/OS-Lab-2/OS-Lab-2/build/CMakeFiles/writer.dir
+/home/runner/work/OS-Lab-2/OS-Lab-2/build/CMakeFiles/reader.dir
+/home/runner/work/OS-Lab-2/OS-Lab-2/build/CMakeFiles/unix_server.dir
+/home/runner/work/OS-Lab-2/OS-Lab-2/build/CMakeFiles/unix_client.dir
+/home/runner/work/OS-Lab-2/OS-Lab-2/build/CMakeFiles/tcp_server.dir
+/home/runner/work/OS-Lab-2/OS-Lab-2/build/CMakeFiles/tcp_client.dir
+/home/runner/work/OS-Lab-2/OS-Lab-2/build/CMakeFiles/udp_server.dir
+/home/runner/work/OS-Lab-2/OS-Lab-2/build/CMakeFiles/udp_client.dir
+/home/runner/work/OS-Lab-2/OS-Lab-2/build/CMakeFiles/shm_writer.dir
+/home/runner/work/OS-Lab-2/OS-Lab-2/build/CMakeFiles/shm_reader.dir
+/home/runner/work/OS-Lab-2/OS-Lab-2/build/CMakeFiles/mq_writer.dir
+/home/runner/work/OS-Lab-2/OS-Lab-2/build/CMakeFiles/mq_reader.dir
+/home/runner/work/OS-Lab-2/OS-Lab-2/build/CMakeFiles/signal_demo.dir
+/home/runner/work/OS-Lab-2/OS-Lab-2/build/CMakeFiles/edit_cache.dir
+/home/runner/work/OS-Lab-2/OS-Lab-2/build/CMakeFiles/rebuild_cache.dir

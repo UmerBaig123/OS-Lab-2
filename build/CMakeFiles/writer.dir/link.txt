@@ -1,0 +1,1 @@
+/usr/bin/cc -Wl,--dependency-file=CMakeFiles/writer.dir/link.d CMakeFiles/writer.dir/writer.c.o -o writer
