@@ -1,1 +1,0 @@
-/usr/bin/cc -Wl,--dependency-file=CMakeFiles/udp_client.dir/link.d CMakeFiles/udp_client.dir/udp_client.c.o -o udp_client

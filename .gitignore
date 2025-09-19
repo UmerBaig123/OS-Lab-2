@@ -1,0 +1,21 @@
+# Build artifacts
+build/
+*.o
+*.out
+*.exe
+
+# Temporary files
+*~
+*.tmp
+*.swp
+*.swo
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Named pipes
+myfifo
+
+# UNIX domain socket files
+unix_sock
